@@ -18,19 +18,19 @@ public class MainController {
     private ProductRepository productRepository;
 
 
+    @GetMapping(path="/allProducts")
     public Product findAProduct(Integer idproduct)
     {
         Long idproducto= new Long(idproduct);
         return productRepository.findOne(idproducto);
     }
 
-    @GetMapping(path="/addOrder") // Map ONLY GET Requests
-    public @ResponseBody String addNewOrder (@RequestParam Integer idProducto,
-                                             @RequestParam Integer idVenta,
-                                             @RequestParam int cantidad){
+    @RequestMapping(method = RequestMethod.POST, value = "/addOrder")
+    public @ResponseBody String addNewOrder (@RequestParam(value = "idProducto")  Integer idProducto,
+                                             @RequestParam(value = "idVenta")  Integer idVenta,
+                                             @RequestParam(value = "cantidad") int cantidad){
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
-
         Sale newSale = new Sale();
         Product product = findAProduct(idProducto);
         float totalValue = cantidad *  product.getUnitValue();
