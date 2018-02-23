@@ -19,21 +19,21 @@ public class MainController {
 
 
     @GetMapping(path="/allProducts")
-    public Product findAProduct(Integer idproduct)
+    public Product findAProduct(Long idproduct)
     {
-        Long idproducto= new Long(idproduct);
-        return productRepository.findOne(idproducto);
+        //Long idproducto= new Long(idproduct);
+        return productRepository.findOne(idproduct);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/addOrder")
-    public @ResponseBody String addNewOrder (@RequestParam(value = "idProducto")  Integer idProducto,
-                                             @RequestParam(value = "idVenta")  Integer idVenta,
-                                             @RequestParam(value = "cantidad") int cantidad){
+    public @ResponseBody String addNewOrder (@RequestParam(value = "idProducto")  Long idProducto,
+                                             @RequestParam(value = "idVenta")  Long idVenta,
+                                             @RequestParam(value = "cantidad") Long cantidad){
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
         Sale newSale = new Sale();
         Product product = findAProduct(idProducto);
-        float totalValue = cantidad *  product.getUnitValue();
+        Long totalValue = cantidad *  product.getUnitValue();
         newSale.setSaleId(idVenta);
         newSale.setProductId(idProducto);
         newSale.setTotalSale(totalValue);
@@ -41,7 +41,7 @@ public class MainController {
         String salida = "Venta efectuada con éxito" +
                 " Id de la factura:" + idVenta +
                 " Valor en pesos:" + totalValue+
-                " Lugar de despacho" + product.getProductLocation();
+                " Lugar de despacho:" + product.getProductLocation();
         return salida;
     }
 
@@ -50,6 +50,5 @@ public class MainController {
         // This returns a JSON or XML with the users
         return saleRepository.findAll();
     }
-
 
 }

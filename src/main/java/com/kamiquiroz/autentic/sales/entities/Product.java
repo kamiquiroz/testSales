@@ -7,24 +7,24 @@ import javax.persistence.Id;
 @Entity // This tells Hibernate to make a table out of this class
 public class Product {
     @Id
-    private int productId;
-    private float unitValue;
+    private Long productId;
+    private Long unitValue;
     private String productName;
     private String productLocation;
 
-    public int getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
-    public float getUnitValue() {
+    public Long getUnitValue() {
         return unitValue;
     }
 
-    public void setUnitValue(float unitValue) {
+    public void setUnitValue(Long unitValue) {
         this.unitValue = unitValue;
     }
 
