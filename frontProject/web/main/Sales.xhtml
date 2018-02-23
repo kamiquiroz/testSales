@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://java.sun.com/jsf/html"
+      xml:lang="en" lang="en">
+<head>
+    <title>Informe de Ventas generales</title>
+</head>
+<body>
+    <h:form>
+
+        <p:dataTable  id="tablaVentas" value="#{listadosController.getListVentas(0, '-1')}"
+                      var="ventas">
+            <p:column>
+                <h:outputText value="#{sale.saleId}"/>
+            </p:column>
+
+            <p:column>
+                <h:outputText value="#{sale.productId}"/>
+            </p:column>
+
+            <p:column>
+                <h:outputText value="#{sale.totalSale}"/>
+            </p:column>
+
+        </p:dataTable>
+
+
+
+    </h:form>
+
+</body>
+</html>
