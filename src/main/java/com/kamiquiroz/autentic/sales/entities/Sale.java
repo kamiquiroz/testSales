@@ -8,31 +8,31 @@ import javax.persistence.ManyToOne;
 @Entity // This tells Hibernate to make a table out of this class
 public class Sale {
     @Id
-    private Long saleId;
-    private Long productId;
-    private Long totalSale;
+    private Integer saleId;
+    private Integer productId;
+    private Integer totalSale;
 
-    public Long getSaleId() {
+    public Integer getSaleId() {
         return saleId;
     }
 
-    public void setSaleId(Long saleId) {
+    public void setSaleId(Integer saleId) {
         this.saleId = saleId;
     }
 
-    public Long getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
-    public Long getTotalSale() {
+    public Integer getTotalSale() {
         return totalSale;
     }
 
-    public void setTotalSale(Long totalSale) {
+    public void setTotalSale(Integer totalSale) {
         this.totalSale = totalSale;
     }
 }
