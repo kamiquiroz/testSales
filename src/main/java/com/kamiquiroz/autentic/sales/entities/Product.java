@@ -9,6 +9,8 @@ public class Product {
     @Id
     private Integer productId;
     private Integer unitValue;
+    private String productName;
+    private String productLocation;
 
     public Integer getProductId() {
         return productId;
@@ -25,10 +27,6 @@ public class Product {
     public void setUnitValue(Integer unitValue) {
         this.unitValue = unitValue;
     }
-
-    private String productName;
-    private String productLocation;
-
 
     public String getProductName() {
         return productName;

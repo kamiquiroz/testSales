@@ -48,6 +48,7 @@ public class MainController {
             Integer totalValue = cantidad * product.getUnitValue();
             newSale.setSaleId(idVenta);
             newSale.setProductId(idProducto);
+            newSale.setAmount(cantidad);
             newSale.setTotalSale(totalValue);
             saleRepository.save(newSale);
             salida = "Venta efectuada con éxito" +
@@ -66,8 +67,12 @@ public class MainController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody
     String  deleteOrder(@RequestParam(value = "saleId") Integer saleId) {
+        if(saleRepository.findOne(saleId)!=null){
             saleRepository.delete(saleId);
-        return "Venta Eliminada";
+            return "Venta Eliminada";
+        }else{
+            return "No existe el id ingresado";
+        }
     }
 
     @RequestMapping(value = "/orders/update",
@@ -84,6 +89,7 @@ public class MainController {
             if (product != null) {
                 Integer totalValue = amount * product.getUnitValue();
                 sale.setProductId(productId);
+                sale.setAmount(amount);
                 sale.setTotalSale(totalValue);
                 saleRepository.save(sale);
                 output = "Venta actualizada con éxito" +

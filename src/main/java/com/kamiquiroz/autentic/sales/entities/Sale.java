@@ -10,6 +10,7 @@ public class Sale {
     @Id
     private Integer saleId;
     private Integer productId;
+    private Integer amount;
     private Integer totalSale;
 
     public Integer getSaleId() {
@@ -34,5 +35,13 @@ public class Sale {
 
     public void setTotalSale(Integer totalSale) {
         this.totalSale = totalSale;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 }
